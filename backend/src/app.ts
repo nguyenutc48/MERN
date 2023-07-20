@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import notesRoutes from "./routes/notes.route";
+import usersRoutes from "./routes/users.route"
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 
@@ -9,6 +10,7 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
+app.use("/api/users", usersRoutes);
 app.use("/api/notes", notesRoutes);
 
 app.use((req, res, next) => {
